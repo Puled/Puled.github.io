@@ -5,6 +5,7 @@ body{
 .love{
 	display:none;
 	/* because I don't deserve you. */
+}
 div img{
 	object-fit: cover;
 	max-width: 100%;
