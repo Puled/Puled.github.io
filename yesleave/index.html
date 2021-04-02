@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWGX7FENDY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EWGX7FENDY');
-</script>
 		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
 		<meta charset="utf-8">
 		<title>外出登记</title>
@@ -19,7 +10,7 @@
 				margin: 0;
 			}
 			.topcard{
-				font-family: "comic sans ms";
+				font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 				font-size: 15px;
 				background-color: #1eb2b1;
 				height: 22vh;
@@ -55,9 +46,8 @@
 				box-shadow:inset 0px 16px 15px -11px #a5d1cf;
 			}
 			.main img{
-				margin-top: 6vh;
-				margin-left: 10vw;
-				height: 60vw;
+				margin-top: 5vh;
+				height: 83vw;
 			}
 			.main p{
 				text-align: center;
@@ -73,12 +63,11 @@
 			#timer{
 				font-weight: 900;
 				color:#fe3434;
-				font-size: 4em;
+				font-size: 4.2em;
 				position: absolute;
 				z-index: 10;
-				padding-top: 18vh;
-				padding-left: 18%;
-				
+				padding-top: 22.1vh;
+				padding-left: 20%;
 				-webkit-text-stroke: #fff003 2px;
 			}
 			.bottom{
@@ -89,7 +78,7 @@
 				text-align: center;
 				font-weight: 200;
 				font-size: 12px;
-				color: #8d8f91;
+				color: #636363;
 			}
 			[contenteditable="true"]{
 				transition: 200ms background-color;
@@ -102,7 +91,7 @@
 	<body>
 		<div class="topcard">
 			<div>
-			<p style="font-weight: 700; padding-top: 5px; font-size: 23px; padding: 4px;" contenteditable="true">
+			<p style="font-weight: 700; padding-top: 5px; font-size: 20px; padding: 4px;" contenteditable="true">
 				<span id="surname">李</span><span id="givenname">峰</span>
 			</p>
 			<p contenteditable="true">
@@ -124,10 +113,10 @@
 		<input type="file" name="image" id="file" onchange="loadFile(event)" accept="image/*" style="display: none;"/>
 		<div class="main">
 			<span id="timer"><span id="countdown">181</span>S</span>
-			<img src="https://ae01.alicdn.com/kf/U3c8bee9c59884da48cd2770c714641e0Y.jpg" >
-			<p><span id="date3">Date </span><span id="time"></span></p>
+			<img src="https://ae01.alicdn.com/kf/U59966ef0b5964a2f875b25494e5a9d00u.jpg" >
+			
 		</div>
-		<p class="bottom">请尽快向保安出示该页面，倒计时结束后页面将失效</p>
+		<p class="bottom">请尽快向保安人员出示该页面，倒计时结束后页面将失效</p>
 		<script>
 			function checkTime(i){
 				return (i < 10) ? "0" + i : i;
