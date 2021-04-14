@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
+		<title>Text Board</title>
+		<style type="text/css">
+			body,html{
+				font-size: calc(1.5em + 0.8vh);
+				font-family: 'Google Sans',sans-serif;
+				height: 100vh;
+				margin: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: #1a73e8;
+				color: white;
+			}
+			p{
+				width:90vw;
+				background-color: #1a73e8;
+				border-radius: 10px;
+				text-align: center;
+				transition: 200ms background-color;
+			}
+			p:focus{
+				background-color: dimgrey;
+				outline: none;
+			}
+			p:empty:before{
+				content: attr(data-placeholder);
+				color: lightgrey;
+			}
+			@media (orientation:portrait){
+				p{
+					padding: 6px 4vw;
+				}
+			}
+			@media (orientation:landscape){
+				p{
+					padding: 3vw;
+				}
+				body,html{
+					font-size: calc(1.5em + 2vh);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<p id="p" contenteditable="true" data-placeholder="Type something" autocapitalize="sentences"></p>
+	</body>
+	<script defer>
+		var node = document.getElementById('p');
+		node.addEventListener('input',function(){
+			hContent = node.innerHTML;
+			localStorage.contentSet = hContent;
+		});
+	</script>
+	<script defer>
+		var nodeA = document.getElementById('p');
+		var aValue = localStorage.getItem('contentSet');
+		nodeA.innerHTML = aValue;
+		// Initial conditions are to be settled.
+	</script>
+</html>
