@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
-		<title>Text Board</title>
+		<title>Test board</title>
 		<style type="text/css">
 			body,html{
 				font-size: calc(1.5em + 0.8vh);
@@ -47,7 +47,7 @@
 		</style>
 	</head>
 	<body>
-		<p id="p" contenteditable="true" data-placeholder="Type something" autocapitalize="sentences"></p>
+		<p id="p" contenteditable="true" data-placeholder="Type something"></p>
 	</body>
 	<script defer>
 		var node = document.getElementById('p');
@@ -61,5 +61,29 @@
 		var aValue = localStorage.getItem('contentSet');
 		nodeA.innerHTML = aValue;
 		// Initial conditions are to be settled.
+	</script>
+		<script type="text/javascript">
+		document.addEventListener("keydown",function onEvent(event) {
+			if (event.keyCode === 27){
+				document.getElementById("p").blur();
+			}
+		})
+	</script>
+	<script type="text/javascript">
+		document.addEventListener("keydown",function onEvent(event) {
+			if (event.keyCode === 191){
+				event.preventDefault()
+				document.getElementById("p").focus();
+			}
+			else if(event.keyCode === 32){
+				document.getElementById("p").focus();
+			}
+			else if(event.keyCode=== 27){
+				document.getElementById("p").blur();
+			}
+		});
+		$('p').keydown(function(e){
+			e.stopPropagation();
+		});
 	</script>
 </html>
