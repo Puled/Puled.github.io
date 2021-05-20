@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
 		<title>Test board</title>
 		<style type="text/css">
-			body,html{
-				font-size: calc(1.5em + 0.8vh);
+			body{
 				font-family: 'Google Sans',sans-serif;
 				height: 100vh;
 				margin: 0;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background-color: #1a73e8;
+				background-color: #40587c;
 				color: white;
+				transition: 400ms background-color, color;
 			}
-			p{
+			#p{
+				font-size: calc(2em + 1vh);
 				width:90vw;
-				background-color: #1a73e8;
 				border-radius: 10px;
 				text-align: center;
 				transition: 200ms background-color;
@@ -40,15 +41,122 @@
 				p{
 					padding: 3vw;
 				}
-				body,html{
+				body{
 					font-size: calc(1.5em + 2vh);
 				}
+			}
+			@media (prefers-color-scheme: dark){
+				body{
+					background-color: #303234;
+					color:#a4c1e7;
+				}
+				p:focus{
+					background-color: #F6F5F7;
+				}
+			}
+			#first{
+				background: #663366;
+			}
+			#first:hover{
+				box-shadow:  -3px -3px 6px  #572b57,
+             3px 3px 6px #753b75;
+			}
+			#second{
+				background: #336666;
+			}
+			#second:hover{
+box-shadow:  -3px -3px 6px  #2b5757,
+             3px 3px 6px #3b7575;
+			}
+			#third{
+				background: #40587c;
+			}
+			#third:hover{
+				box-shadow:  -3px -3px 6px  #364b69, 3px 3px 6px #4a658f;
+			}
+			#fourth{
+				background: #bb8d26;
+			}
+			#fourth:hover{
+box-shadow:  -3px -3px 6px  #9f7820,
+             3px 3px 6px #d7a22c;
+			}
+			#fifth{
+				background: #e6e7ee;
+			}
+			#fifth:hover{
+box-shadow:  3px 3px 6px #c4c4ca,
+             -3px -3px 6px #ffffff;
+			}
+			#sixth{
+				background: #303234;
+			}
+			#sixth:hover{
+box-shadow:  -3px -3px 6px #292b2c,
+             3px 3px 6px #373a3c;
+			}
+			#container{
+				font-size: small;
+				position: absolute;
+				top: 20px;
+				right: 10px;
+				display: flex;
+				flex-direction: row-reverse;
+				text-align: center;
+				align-items: center;
+			}
+			#hover-content{
+				visibility: hidden;
+				opacity: 0;
+				transition: visibility 200ms, opacity 200ms linear;
+			}
+			#container:hover #hover-content{
+				visibility: visible;
+				opacity: 1;
+			}
+			div span{
+				margin: 0 5px;
+				height: 30px;
+				width: 30px;
+				border-radius: 50%;
+				display: inline-block;
+				transition: 100ms box-shadow;
 			}
 		</style>
 	</head>
 	<body>
+		<div id="container">
+			Colors
+			<div id="hover-content"><span id="first"></span><span id="second"> </span> <span id="third"> </span><span id="fourth"> </span> <span id="fifth"></span> <span id="sixth"></span></div>
+		</div>
 		<p id="p" contenteditable="true" data-placeholder="Type something"></p>
 	</body>
+	<script type="text/javascript" defer>
+		document.getElementById("first").onclick = function setcolor(){
+			document.body.style.background = '#663366';
+			document.body.style.color = 'white';
+		}
+		document.getElementById("second").onclick = function setcolor(){
+			document.body.style.background = '#336666';
+			document.body.style.color = 'white';
+		}
+		document.getElementById("third").onclick = function setcolor(){
+			document.body.style.background = '#40587c';
+			document.body.style.color = 'white';
+		}
+		document.getElementById("fourth").onclick = function setcolor(){
+			document.body.style.background = '#bb8d26';
+			document.body.style.color = 'white';
+		}
+		document.getElementById("fifth").onclick = function setcolor(){
+			document.body.style.background = '#e6e7ee';
+			document.body.style.color = '#31344b';
+		}
+		document.getElementById("sixth").onclick = function setcolor(){
+			document.body.style.background = '#303234';
+			document.body.style.color = '#F6F5F7';
+		}
+	</script>
 	<script defer>
 		var node = document.getElementById('p');
 		node.addEventListener('input',function(){
@@ -63,17 +171,17 @@
 		// Initial conditions are to be settled.
 	</script>
 		<script type="text/javascript">
-		document.addEventListener("keydown",function onEvent(event) {
-			if (event.keyCode === 27){
-				document.getElementById("p").blur();
-			}
-		})
+		$(document).on('keydown', function(event) {
+		if (event.key == "Escape") {
+			document.getElementById("p").blur();
+       }
+   });
 	</script>
 	<script type="text/javascript">
 		document.addEventListener("keydown",function onEvent(event) {
 			if (event.keyCode === 191){
 				event.preventDefault()
-				document.getElementById("p").focus();
+				$("p").focus();
 			}
 			else if(event.keyCode === 32){
 				document.getElementById("p").focus();
