@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
+		<title>考研热潮</title>
+		<style type="text/css">
+			body{
+				font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+				margin: 0;
+				background-color: #e6e7ee;
+				color: #31344b;
+				padding-bottom: 20vh;
+			}
+			.modebar{
+				display: none !important;
+			}
+			header{
+				background-image: url("https://ftp.bmp.ovh/imgs/2021/06/d6dcb9e125bf86d4.jpg");
+				filter: grayscale(0.4);
+				width: 100%;
+				height: 70vh;
+				background-size: cover;
+				background-repeat: no-repeat;
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				justify-content: center;
+				align-items: center;
+			}
+			#h1ksyt{
+				padding: 2vh;
+				color: white;
+				font-size: 4em;
+				background-color: #5050509e;
+			}
+			#sa23la{
+				color: gray;
+				text-align: center;
+				padding: 30px;
+			}
+			#sa23la span{
+				padding: 2vw;
+			}
+			h1{
+				text-align: center;
+				padding: 5vh 0;
+				color: #1e4863;
+			}
+			a{
+				color: #00519c;
+				text-decoration:none ;
+			}
+			a:hover{
+				text-decoration: underline 2px #00519c;
+			}
+			#datawrapper-chart-Mc7TE, #plotly1{
+				margin: 10vh 0;
+				width: 100%;
+			}
+			#plotly1{
+				height: 70vh;
+			}
+			section{
+				margin: 0 20vw;
+			}
+			p{
+				line-height: 1.8em;
+				text-indent: 2em;
+				padding: 0 1em;
+			}
+			h3{
+				text-align: center;
+				margin-bottom: -60vh;
+				position: sticky;
+				top: 1vh;
+				height: 50vh;
+			}
+			#salaryBar, #popBar{
+				width: 100%;
+				height: 20px;
+				display: flex;
+				flex-flow: row nowrap;
+			}
+			#salaryBar span, #popBar span{
+				text-align: center;
+				height: 100%;
+				transition: scale 100ms;
+			}
+			#salaryBar span:hover{
+				transform: scale(1.2);
+			}
+			#popBar span:hover{
+				transform: scale(1.2);
+			}
+			#flex1{
+				border-radius: 10px 0 0 10px;
+				width: 10%;
+				background-color: #e3fdfd;
+			}
+			#flex2{
+				width: 23%;
+				background-color: #cbf1f5;
+			}
+			#flex3{
+				width: 30%;
+				background-color: #a6e3e9;
+			}
+			#flex4{
+				width: 27%;
+				background-color: #71c9ce;
+			}
+			#flex5{
+				border-radius: 0px 10px 10px 0px;
+				width: 10%;
+				background-color:#73afb3 ;
+			}
+			#flex21{
+				border-radius: 10px 0 0 10px;
+				width: 10%;
+				background-color: #c8e8f9;
+			}
+			#flex22{
+				width: 18%;
+				background-color: #b6e0f6;
+			}
+			#flex23{
+				width: 16%;
+				background-color: #a4d8f4;
+			}
+			#flex24{
+				width: 12%;
+				background-color: #88ccf1;
+			}
+			#flex25{
+				width: 10%;
+				background-color: #7fc9f0;
+			}
+			#flex26{
+				width: 10%;
+				background-color: #6dc1ee;
+			}
+			#flex27{
+				width: 9%;
+				background-color: #5bb9ec;
+			}
+			#flex28{
+				width: 8%;
+				background-color: #48b1ea;
+				color: white;
+			}
+			#flex29{
+				border-radius: 0px 10px 10px 0px;
+				width: 7%;
+				background-color: #24a2e5;
+				color: white;
+			}
+			.legend{
+				padding-left: 1em;
+				font-size: large;
+				font-weight: bold;
+			}
+			#scale{
+				height: 4em;
+				width: 100%;
+				font-style: italic;
+				font-size: 5px;
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: space-between;
+			}
+			#zhihuStyle{
+				align-items: center;
+				padding: 20px;
+				background-color: #f6f6f6;
+				width: 100%;
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: space-between;
+				border-radius: 5px;
+			}
+			#zhihuStyle div{
+				width: 20%;
+				display: flex;
+				flex-flow: column nowrap;
+				justify-content: center;
+			}
+			.citation{
+				border-radius: 0 10px 10px 0;
+				border-left: 5px solid #6e919d;
+				background-color: #dbdce7;
+				padding: 10px 10px 35px 15px;
+			}
+			.citation::first-letter{
+				font-size: 200%;
+			}
+			.citation span{
+				font-size: small;
+				color: darkgrey;
+				float: right;
+			}
+			#diagram{
+				margin-left: -10vw;
+				width: 80vw;
+				display: grid;
+				grid-template-columns: repeat(60,1fr);
+				row-gap: 2px;
+			}
+			#diagram span{
+				background-color: #ff9800;
+				content: "";
+				border-radius: 50%;
+				height: 1vw;
+				width: 1vw;
+			}
+			#diagram span:nth-child(-n+324), #asdass span:first-child{
+				background-color: #336666;
+			}
+			#diagram span:nth-last-child(-n+303){
+				background-color: #e3abff;
+			}
+			#diagram span:nth-child(n+1016):nth-child(-n+1146), #asdass span:last-child{
+				background-color: #af62de;
+			}
+			#diagram span:first-child{
+				background-color: #00acc1;
+			}
+			#diagram span:last-child{
+				background-color: black;
+			}
+			#asdass{
+				padding: 20px 0 15px 0;
+				height: 20px;
+				width: 80%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+			}
+			#asdass span{
+				background-color: #ff9800;
+				margin: 0 3px 0 1vw;
+				height: 1vw;
+				width: 1vw;
+				border-radius: 50%;
+			}
+			.notice{
+				display: none;
+			}
+			
+			/* Mobile portrait CSS style*/
+			
+			@media (orientation: portrait){
+				.notice{
+					text-indent: 0em;
+					display: block;
+					text-align: center;
+				}
+				header{
+					background-image: url("https://i.loli.net/2021/06/18/f5YRgucpvkFj6IX.jpg");
+				}
+				section{
+					margin: 0 5vw;
+				}
+				#datawrapper-chart-Mc7TE, #plotly1{
+					width: 95vw;
+				}
+				#plotly1{
+					height: 90vh;
+				}
+				.legend::after{
+					content: "";
+					display: block;
+					height: 40vh;
+				}
+				#salaryBar, #popBar, #scale{
+					width: 80vh;
+					transform: rotate(90deg);
+				}
+				#salaryBar{
+					margin-left: -10vh;
+				}
+				#popBar{
+					margin: -9vw 0 35vh -20vh;
+				}
+				#scale{
+					height: 20px;
+					font-size: normal;
+					margin-left: -5vh;
+					margin-top: -4vw;
+				}
+				#zhihuStyle{
+					padding: 10px;
+					margin-left: -10px;
+				}
+				#zhihuStyle div{
+					display: none;
+				}
+				#diagram{
+					grid-template-columns: repeat(26,1fr);
+					margin-left: -2vw;
+					width: 96vw;
+				}
+				#diagram span, #asdass span{
+					width: 2vw;
+					height: 2vw;
+				}
+				#asdass{
+					justify-content: center;
+					width: 100%;
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<header><div id="h1ksyt">考研热潮</div></header>
+		<div id="sa23la"><span>最后更新于6月20日</span><span>By <a href=""></a>小宝</span></div>
+		<p class="notice">推荐您使用电脑或平板（横屏）浏览本页。<a href="https://github.com/Puled/Puled.github.io/tree/master/kaoyan#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E7%94%B5%E8%84%91%E6%88%96%E6%A8%AA%E5%B1%8F%E5%B9%B3%E6%9D%BF%E9%98%85%E8%AF%BB">为什么？</a></p>
+		<section>
+			<h1>共同的目标</h1>
+			<p>“上大学有什么目标吗？”</p>
+			<p>“考研”--我的同学回复道。她读的是建筑系，学习到深夜12点是大学三年来的家常便饭：“我们这个系，不考研出来不好找工作。”</p>
+			<p>她绝非个例。2021年，高校毕业生首次突破900万，<a href="http://www.xinhuanet.com/2021-05/13/c_1127440236.htm">创历史新高</a>，让应届生的就业压力<a href="http://www.xinhuanet.com/2021-04/13/c_1127325856.htm">日益增长</a>。越来越多的本科生以及专科生选择了考研，巨大的考研压力让不少考生自嘲为“考研狗”；流行在互联网上的段子，比如<a href="https://www.zhihu.com/question/358077782">一人升天，全寝保研</a>，以及网络热词"<a href="https://baike.baidu.com/item/%E5%86%85%E5%8D%B7/54275161#:~:text=%E5%86%85%E5%8D%B7%EF%BC%8C%E7%BD%91%E7%BB%9C%E6%B5%81%E8%A1%8C%E8%AF%8D,%E5%8A%AA%E5%8A%9B%E6%AF%94%E2%80%9D%E4%B8%8B%E9%99%8D%E7%9A%84%E7%8E%B0%E8%B1%A1%E3%80%82">内卷</a>"，无不营造着焦虑的氛围。</p>
+				<iframe title="" aria-label="Interactive line chart" id="datawrapper-chart-Mc7TE" src="https://datawrapper.dwcdn.net/Mc7TE/1/" scrolling="no" frameborder="0" style="border: none;" height="440"></iframe>
+			<script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(e){if(void 0!==e.data["datawrapper-height"]){var t=document.querySelectorAll("iframe");for(var a in e.data["datawrapper-height"])for(var r=0;r<t.length;r++){if(t[r].contentWindow===e.source)t[r].style.height=e.data["datawrapper-height"][a]+"px"}}}))}();</script>
+			<p>全国研究生报考人数在2016-2020四年间翻了一番；尽管4年前的应届高考人数（2012-2016）仅增长了3%。然而，与不断扩招的大学本科和专科相对的是；研究生录取率常年稳定在3成附近。</p>
+			<p>考研热的原因是什么？我做了简单的小调查，同时也<a href="https://www.163.com/dy/article/FT4HH9CN0541D4NQ.html">上网查询</a>：一个是就业难，加上目标不太清晰，就先继续深造，毕竟多学点东西没坏处；二是希望提高自己，接触更好的环境，开阔自己的视野，完成自己的学业理想。</p>
+			<h1 id="special">钱途迷茫</h1>
+			<p>据Boss直聘研究院的<a href="https://static.zhipin.com/v2/pdf/graduates-employment-report-2021.pdf">2021应届生就业趋势报告</a>，硕士平均招聘薪资11224元，约为本科生的1.8倍，专科生的2.1倍；然而，BOSS直聘的数据也显示，其样本所覆盖的求职毕业生逾6成集中在<a href="http://pdf.dfcfw.com/pdf/H3_AP202002191375245249_1.pdf">19座一线或新一线城市</a>，这19座承载着亿万漂泊的年轻人梦想的城市人口之和仅占全国的18%；更值得注意的是，调查覆盖的应届求职毕业生中，毕业于双一流院校的占比高达14%：暂且抛开深造或早已高就的那部分，这个数字仍是全国<a href="https://zhuanlan.zhihu.com/p/274502443">双一流高考录取率6%</a>的两倍之多。</p>
+			<p>记得曾今有人开玩笑说，现在不努力，将来只能送外卖去了；然而，据<a href="file:///C:/Users/maybu/Downloads/2019%E5%B9%B4%E5%8F%8A2020%E5%B9%B4%E7%96%AB%E6%83%85%E6%9C%9F%E9%97%B4%E7%BE%8E%E5%9B%A2%E9%AA%91%E6%89%8B%E5%B0%B1%E4%B8%9A%E6%8A%A5%E5%91%8A%20(2).pdf">2020美团疫情期间骑手就业报告</a>，大专及以上学历的骑手约占18%，8000元以上收入的不足10%。我国约有<a href="https://zhuanlan.zhihu.com/p/87115696">800余万</a>硕士研究生；巧合的是，这个数字也是我国骑手的<a href="https://news.cctv.com/2021/04/19/ARTI3Rtw9dZNiXGo9H1Dh4yk210419.shtml#:~:text=%E7%A0%94%E7%A9%B6%E6%9C%BA%E6%9E%84%E7%BB%9F%E8%AE%A1%EF%BC%8C%E6%A0%B9%E6%8D%AE%E7%9B%B8%E5%85%B3,%E5%B7%B2%E7%AA%81%E7%A0%B4700%E4%B8%87%E4%BA%BA%E3%80%82">总数量</a>。据美团报告，全国约有<a href="https://www.zhihu.com/question/420086918">7万</a>研究生送外卖，约占总外卖骑手的1%；换句话说：中国每100个研究生，就有一个从事外卖骑手行业。</p>
+			<br>
+			<p class="legend">骑手月薪水平vs日工作时常(小时)占比</p>
+			<div id="salaryBar">
+				<span id="flex1"> 1k </span><span id="flex2">1k-3k</span><span id="flex3">3-5k</span><span id="flex4">5-8k</span><span id="flex5">8k</span>
+			</div>
+			<div id="scale"><span>0%</span><span>50%</span><span>100%</span></div>
+			<div id="popBar">
+				<span id="flex21">0-1h</span><span id="flex22">1-2h</span><span id="flex23">2-3h</span><span id="flex24">3-4</span><span id="flex25">4-5</span><span id="flex26">5-6</span><span id="flex27">6-7</span><span id="flex28">7-8</span><span id="flex29">8+</span>
+			</div>
+			<br>
+			<p>“北上广没有爱情”--一名网友在简书上<a href="https://www.jianshu.com/p/b125812cef7f">写道</a>。另一位网友<a href="https://www.sohu.com/a/407175256_530597">说</a>，“讨厌广州的社会关系冷淡，表面城市精英，下班之后特别孤单。”</p>
+			<p>上个月，一则深圳房价比48.1的<a href="https://www.36kr.com/p/1190111068277252">新闻</a>刷爆微博；激起无数年轻人买房难的共鸣；殊不知大城市的冷漠，更在于资源分配不均和极高的生存压力。</p>
+			<iframe title="中国平均睡眠时长" aria-label="Bar Chart" id="datawrapper-chart-shRmn" src="https://datawrapper.dwcdn.net/shRmn/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="143"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(e){if(void 0!==e.data["datawrapper-height"]){var t=document.querySelectorAll("iframe");for(var a in e.data["datawrapper-height"])for(var r=0;r<t.length;r++){if(t[r].contentWindow===e.source)t[r].style.height=e.data["datawrapper-height"][a]+"px"}}}))}();</script>
+			<p>国内一线城市医疗资分配不均，再以深圳为例，2019年全市每千人医院床位数<a href="http://wjw.sz.gov.cn/xxgk/tjsj/zxtjxx/content/post_7786068.html">3.83</a>张，而同期的全国平均水平是<a href="http://www.nhc.gov.cn/guihuaxxs/s10748/202006/ebfe31f24cc145b198dd730603ec4442.shtml">6.3</a>张。这就是说，如果1000个人里面有4个人需要住院，第4个人就会面临床位紧张的问题。一线城市尽管汇聚了全国顶尖医疗资源，但却没一个能上榜全国<a href="http://www.szkweekly.com/index.php?m=content&c=index&a=show&catid=39&id=19967">每千人床位数</a>前30。</p>
+			<h1>文凭之争</h1>
+			<div id="zhihuStyle">
+				<b style="color: #121212; font-size: 22px;">为了考研，我们能努力到什么程度？</b>
+				<div><span style="color: #8590a6; font-size: 14px; text-align: center;">被浏览</span><b style="font-size: 18px; text-align: center; color: 121212;">29,978,053</b></div>
+			</div>
+			<p>“为了考研，我们能努力到什么程度？”这则知乎上的<a href="https://www.zhihu.com/question/51134718/answer/503718008">问题</a>被浏览近3千万次，在2600余则回答中，众多答主回忆自己努力考研“上岸”的成功经历，勉励着深夜台灯下奋斗的学子。</p>
+			<p>这些寄希望于考研上岸更优质的高等学府，进而实现自己，或者超越他人的学子们，真的实现了阶级的跨越了吗？不妨如此分析：从双飞考研211，看似实现一大飞跃，然则原先211院校的学生可能早已前往985清北高造；而那些985双一流学子，或许现已出国 -- 这个战场上不仅你在拼搏，每一个人都在奋斗，甚至用自己的健康换取分数，这是一个不进则退的残酷战场。</p>
+			<iframe frameborder="0" scrolling="no" id="plotly1" src="https://chart-studio.plotly.com/~commelinales/1.embed?showlink=false" seamless="seamless"></iframe>
+			<p>2020年，回国留学生比例占比国内应届生9.15%；连一度被酸的海归都开始<a href="https://www.lxbird.com/zixun/detail?id=1713">感慨</a>道就业难。今年，在清华毕业做保姆的<a href="https://www.zhihu.com/question/461763906">新闻</a>还在朋友圈中疯传的时候，复旦大学青年研究院<a href="https://zh.wikipedia.org/wiki/2021%E5%B9%B4%E5%BE%A9%E6%97%A6%E5%A4%A7%E5%AD%B8%E6%95%B8%E5%AD%B8%E7%A7%91%E5%AD%B8%E5%AD%B8%E9%99%A2%E6%AE%BA%E4%BA%BA%E4%BA%8B%E4%BB%B6">杀人案</a>再一次霸占头条，不少网友纷纷借机表示“非升即走”政策让同行竞争激烈，存活艰难。</p>
+			<h1>理想与绝望</h1>
+			<p class="citation">“越来越多的人将会发现，即使从小就努力学习，从很好的学校毕业，后来努力工作，但迎接他们的将是“长久的低薪、难升迁的职场、高昂的物价、买不起的房子……”。尽管你很努力，待人友善，有公德心，但就是挣不到钱，只能在社会的底层挣扎。”<br>
+			<span><a href="https://www.ruanyifeng.com/survivor/collapse/working-poor.html">阮一峰</a></span>
+			<p>面对巨大的生存压力，或者“内卷”（泛指激烈的，回报较少的被动竞争），一部分年轻人选择了<a href="https://zh.wikipedia.org/wiki/%E8%BA%BA%E5%B9%B3">躺平</a>；也有的在互联网上半开玩笑的抱怨道“有富婆养我吗？我不想努力了”，在<a href="https://s.weibo.com/weibo?q=%23%E4%B8%89%E8%83%8E%23&wvr=6&b=1&Refer=SWeibo_box">微博</a>和贴吧上，不乏冷嘲热讽三胎政策的帖子：“一个都不愿意生，更别说仨”。 </p>
+			<p>上一届应试教育体制内的强者，正在逃离北上广，举家前往他们认为梦幻安宁的地方--云南大理。越来越多的程序员，<a href="https://github.com/LeadroyaL/pdd_3years/blob/master/pdd_3year.md">辞去了</a>大厂高新的职位，隐没人间平淡生活。可是这些选择安逸，选择平淡生活的，本身已经是体制内的强者了，而千千万万普通的工人，学生，根本无法左右自己的命运。</p>
+			<p>逃离北上广来到大理生活的人们，他们在大都市挣够了钱，以至于可以在小镇大理安宁生活；裸辞大厂的程序员，也挣够了安逸度日的钱；而更多的则是无奈苟活的大众，没有资本逃离现在的生活，更没有能力去改变这种困境，沉浸在一个平淡又可怜的死循环之中挣扎奋斗。</p>
+			<h1>我们究竟为了什么而活？</h1>
+			<p>假设你能活到90岁：比2000年出生人口的预期寿命<a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=CN">71岁</a>多活19年的话(多出的用浅色表示)，那你一生中将会有4680周。大部分人会在学校渡过他们一生的前5分之1，然后步入社会工作。漫长的工作生涯将是你短暂人生的主旋律：一个普通的工人的一辈子，平均会工作2200周，直到65岁退休。退休后，你只剩1300周的闲暇时光，虽然听起来很多，但此时你的身体，健康程度，记忆力，都远远不如从前，留给你能享受的时光，也所剩无几。</p>
+			<div id="asdass"><span></span>学习 <span></span>工作 <span></span>退休</div>
+			<div id="diagram">
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+				</span><span></span><span></span><span></span><span></span>
+			</div>
+			<p>回看和展望我们的一生：很长，也很短。我们考研读博也好，辍学打工也罢；未来无论成为了一名面包房师傅，外卖小哥，省长，还是法外狂徒张三，在浩渺的宇宙和时间的长河中竟都显得那么不重要。倘若人没有来世，那唯一的意义就是活在当下：做自己想做的，让自己开心的活着；因为，让你快乐，留在你记忆中的每一秒，便是最珍贵的每一秒，便是生命一切的意义所在。</p>
+		</section>
+		<!-- 多余的引用放这儿
+		http://www.360doc.com/content/20/0615/01/49586_918514737.shtml
+		https://www.163.com/dy/article/FUFL591E0531O7QG.html
+		https://www.163.com/dy/article/FVT6BGFV0536S4NP.html
+		https://www.163.com/dy/article/G1JPQ43505431651.html
+		-->
+	</body>
+</html>
