@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="refresh" content="4; URL=https://www.sxu.edu.cn/" />
+		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
+		<title>.</title>
+		<style type="text/css">
+			body{
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-family: PingFangSC-Regular, sans-serif;
+				font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+				font-size: larger;
+				color: #31344B;
+				background-color: #E6E7EE;
+				padding: 0px 10vw;
+			}
+			span::after{
+				content: "";
+				animation: countdown 100ms step-end;
+			}
+			span::after{
+				animation-duration: 4.3s;
+			}
+			@keyframes countdown{
+				0%{
+					content: "4";
+				}
+				25%{
+					content: "3";
+				}
+				50%{
+					content: "2";
+				}
+				75%{
+					content: "1";
+				}
+				95%{
+					content: "0";
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+					欢迎来到RubbishSchool.icu<br /><br>
+					将于<span id="count"></span>s后自动跳转...
+		</p>
+	</body>
+</html>
