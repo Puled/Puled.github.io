@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
+		<meta charset="utf-8">
+        <style>
+            html{
+                display: flex;
+                height: 100vh;
+                width: 100vw;
+                justify-content: center;
+                align-items: center;
+                font-size: x-large;
+                margin:none;
+                padding:none;
+            }
+            p,div{
+              padding: 0 20vw;            }
+        </style>
+    </head>
+<p>iPhone 8 是世界上最好用的手机。</p>
+  <div id="timeSince" onclick="toggleContent()"></div>
+  <div id="totalDays" onclick="toggleContent()"></div>
+<script>
+  var startDate = new Date("2020-01-01");
+  var currentDate = new Date();
+
+  var years = currentDate.getFullYear() - startDate.getFullYear();
+  var months = currentDate.getMonth() - startDate.getMonth();
+  var days = currentDate.getDate() - startDate.getDate();
+
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  if (days < 0) {
+    var lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 0);
+    days += lastMonth.getDate();
+    months -= 1;
+  }
+
+  var timeSinceElem = document.getElementById("timeSince");
+  timeSinceElem.innerHTML = years + "年 " + months + "月 " + days + "天";
+
+  var totalDaysElem = document.getElementById("totalDays");
+  totalDaysElem.style.display = "none";
+
+  function toggleContent() {
+    if (timeSinceElem.style.display === "none") {
+      timeSinceElem.style.display = "block";
+      totalDaysElem.style.display = "none";
+    } else {
+      timeSinceElem.style.display = "none";
+      totalDaysElem.style.display = "block";
+
+      var totalDays = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
+      totalDaysElem.innerHTML = totalDays + " days";
+    }
+  }
+</script>
+</html>
