@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My HTML5 Document</title>
+    <style>
+        body{
+            height: 90vh;
+            color: white;
+            margin: 0;
+        }
+        .sign{
+            width: 90vw;
+            margin: 10vh 5vw;
+        }
+        div{
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        p, .rect{
+            display: flex;
+            flex-flow: column nowrap;
+            margin: 0 1vw;
+        }
+        .rect{
+            background-color: #00B5E2; 
+            align-self: stretch;
+            justify-content: center;
+            padding: 10px;
+        }
+        .cn{
+            font-size: 28px;
+        }
+        .en{
+            font-size: small;
+        }
+    </style>
+  </head>
+  <body>
+<div class="sign">
+    <p style="flex-grow: ;"><span class="cn">嘉禾望岗方向</span> <span class="en">Towards Jiahewanggang</span></p>
+    <p><span class="cn">出站</span> <span class="en">Exit</span></p>
+    <div class="rect"><span>14号线</span> <span>Line 14</span></div>
+    <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12H17M18 12L13 7M18 12L13 17" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> 
+</div>  
+</body>
+</html>
