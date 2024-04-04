@@ -4,22 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>love</title>
   <style>
-    body{
-        padding-top: 10vh;
+    body,html,p,audio{
         margin: 0;
-        overflow-x: hidden;
-    }
-    audio{
-        padding-left: 10vw;
-    }
-    p{
-        margin: 0;
-        padding: 10px 10vw;
-    }
-    details{
-        padding-left: 2em;
-        width: 100vw;
-
     }
     details > summary {
         list-style: none;
@@ -29,27 +15,91 @@
     details > summary::-webkit-details-marker {
         display: none;
     }
+    @media (orientation:landscape){
+        body{
+            padding-top: 15vh;
+            padding-bottom: 15vh;
+        }
+        summary{
+            color:#40587c;
+            padding-bottom: 2vh;
+            padding-top: 5vh;
+            padding-left: 5vw;
+        }
+        p{
+            color: #303234;
+            padding-left: 7vw;
+            padding-right: 7vw;
+            padding-bottom: 2vh;
+        }
+        audio{
+            padding-left: 7vw;
+            padding-bottom: 4vh;
+        }
+        b{
+            color: #336666;
+        }
+    }
+    @media (orientation:portrait){
+        summary{
+            color:#40587c;
+            padding-left: 10vw;
+            padding-top: 4vh;
+            padding-bottom: 5vh;
+        }
+        p{
+            color: #303234;
+            padding-left: 12vw;
+            padding-right: 10vw;
+            padding-bottom: 1vh;
+        }
+        audio{
+            padding-left: 15vw;
+            width: 70vw;
+            max-height: 50px;
+            padding-bottom: 5vh;
+        }
+        b{
+            color: #572b57;
+        }
+    }
   </style>
 </head>
 <body>
     <details open>
         <summary> Apr 2023</summary>
         <p><b>嘿嘿</b>-苏安，苏安，嘿嘿。好想你。</p>
-<audio controls>
-    <source src="Apr2.mp3">
-</audio>
+        <audio controls>
+             <source src="Apr2.mp3">
+        </audio>
+        <p><b>即兴发挥</b>-(歌曲)</p>
+        <audio controls>
+            <source src="即兴发挥.m4a">
+        </audio>
 <p><b>苏安</b>-苏安。</p>
 <audio controls>
     <source src="苏安.m4a">
 </audio>
+    <p><b>赠予我的挚爱</b></p>
+    <audio controls>
+        <source src="赠予我的挚爱.m4a">
+    </audio>
     </details>
-    <details>
+    <details open>
         <summary>Mar 2023</summary>
-        <p>20240331_155609</p>
+        <p><b>20240331_155609</b>-我们语文老师他讲普通话并不是很标准，但起码能听懂他在说什么，
+            当然很神奇的，就是他总是能把一些嗯话读错字音，导致整句话就很好笑。 
+            那比如说好记性不如烂笔头，他马后面，他把最后这三个字说说成那个懒鼻头，我真的我说当时奔不住，直接笑了出来。
+            然后他问我怎么有什么好笑的啊？我说你懒鼻头什么，还有美国总统拜登在他的口中变成了巴登啊。（笑） 
+            哇，天哪，那现在我们班已经开始流传，我们语文老师，嗯...是什么？ 上辈子是什么？那个传说了，我真的。</p>
 <audio controls>
     <source src="20240331_155609.m4a">
 </audio>
-<p>我真的服了</p>
+    <p><b>摇篮曲</b>-(歌曲)</p>
+    <audio controls>
+        <source src="摇篮曲.m4a">
+    </audio>
+<p><b>我真的服了</b>-你不要这样，哎呀我真的服了，我不理你了。</p>
 <audio controls>
     <source src="我真的服了.m4a">
 </audio>
