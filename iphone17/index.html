@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui">
+    <title>Time Counter</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+            --glass-bg: light-dark(rgb(255 255 255 / 0.38), rgb(30 30 34 / 0.42));
+            --glass-border: light-dark(rgb(246, 246, 246), rgb(255 255 255 / 0.16));
+            --glass-text: light-dark(rgb(20 20 24), rgb(245 245 247));
+            --glass-shadow: light-dark(0 1rem 3rem rgb(0 0 0 / 0.12), 0 1rem 3rem rgb(0 0 0 / 0.45));
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-block-size: 100%;
+        }
+
+        body {
+            min-block-size: 100dvh;
+            margin: 0;
+            padding: max(2rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+            display: grid;
+            place-content: center;
+            justify-items: center;
+            gap: 0.65rem;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            line-height: 1.35;
+            text-align: center;
+            color: var(--glass-text);
+            background: light-dark(rgb(238 239 243), rgb(12 12 14));
+            background-attachment: fixed;
+        }
+
+        p {
+            margin: 0;
+            padding-block: 0.85rem;
+            padding-inline: clamp(1.25rem, 8vw, 4rem);
+            border: 0.0625rem solid var(--glass-border);
+            border-radius: 4rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(1.5rem) saturate(1.6);
+            -webkit-backdrop-filter: blur(1.5rem) saturate(2);
+            box-shadow: inset 0 0.0625rem rgb(255 255 255 / 0.35), var(--glass-shadow);
+            font-size: inherit;
+            font-weight: 600;
+            line-height: inherit;
+        }
+
+        #timeSince, #totalDays {
+            min-inline-size: min(70vw, 30rem);
+            cursor: pointer;
+            transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        #timeSince:active, #totalDays:active {
+            transform: scale(0.97);
+        }
+
+        /* Apple / WebKit */
+        @supports (-webkit-backdrop-filter: blur(1px)) and (padding: max(0px, env(safe-area-inset-bottom))) {
+            body {
+                background:
+                    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgb(130 150 255 / 0.20), transparent 30%),
+                    radial-gradient(circle at 30% 15%, rgb(255 255 255 / 0.18), transparent 35%),
+                    radial-gradient(circle at 75% 85%, rgb(100 120 255 / 0.15), transparent 40%),
+                    light-dark(rgb(242 243 247), rgb(8 8 10));
+            }
+
+            #timeSince, #totalDays {
+                border-radius: 2rem;
+                background: linear-gradient(135deg, rgb(255 255 255 / 0.34), rgb(255 255 255 / 0.08));
+                -webkit-backdrop-filter: blur(2rem) saturate(1.8) brightness(1.08);
+                backdrop-filter: blur(2rem) saturate(1.8) brightness(1.08);
+                border-color: rgb(255 255 255 / 0.24);
+                box-shadow:
+                    inset 0 0.0625rem rgb(255 255 255 / 0.55),
+                    inset 0 -0.0625rem rgb(255 255 255 / 0.08),
+                    0 1rem 3rem rgb(0 0 0 / 0.14);
+            }
+        }
+
+        /* Touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #timeSince, #totalDays {
+                user-select: none;
+                -webkit-user-select: none;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            #timeSince:active, #totalDays:active {
+                transform: scale(0.96);
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            #timeSince, #totalDays {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>我在使用 iPhone 17</p>
+    <div id="timeSince" onclick="toggleContent()"></div>
+    <div id="totalDays" onclick="toggleContent()"></div>
+
+    <script>
+        const startDate = new Date("2026-08-15");
+        const currentDate = new Date();
+
+        let years = currentDate.getFullYear() - startDate.getFullYear();
+        let months = currentDate.getMonth() - startDate.getMonth();
+        let days = currentDate.getDate() - startDate.getDate();
+
+        if (months < 0) {
+            years -= 1;
+            months += 12;
+        }
+
+        if (days < 0) {
+            const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0);
+            days += lastMonth.getDate();
+            months -= 1;
+        }
+
+        const timeSinceElem = document.getElementById("timeSince");
+        const totalDaysElem = document.getElementById("totalDays");
+
+        timeSinceElem.textContent = `${years}年 ${months}月 ${days}天`;
+        totalDaysElem.style.display = "none";
+
+        function toggleContent() {
+            if (timeSinceElem.style.display === "none") {
+                timeSinceElem.style.display = "block";
+                totalDaysElem.style.display = "none";
+            } else {
+                timeSinceElem.style.display = "none";
+                totalDaysElem.style.display = "block";
+
+                const totalDays = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
+                totalDaysElem.textContent = `${totalDays} days`;
+            }
+        }
+    </script>
+</body>
+</html>
